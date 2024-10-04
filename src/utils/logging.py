@@ -1,0 +1,1 @@
+# Custom logging for application status (no sensitive data logging)

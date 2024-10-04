@@ -1,0 +1,1 @@
+# Handles secure display and timed clearing of transcriptions

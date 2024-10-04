@@ -1,0 +1,1 @@
+# Electron app initialization and rendering logic for the user interface

@@ -1,0 +1,1 @@
+# Module for handling real-time audio capture and encoding

@@ -1,0 +1,1 @@
+# Main entry point for the desktop application, initializes audio capture and UI

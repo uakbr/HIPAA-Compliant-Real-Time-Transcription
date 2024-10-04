@@ -1,0 +1,1 @@
+# Configuration settings (e.g., audio buffer size, PHI detection rules)

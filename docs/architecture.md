@@ -1,0 +1,1 @@
+# Detailed technical architecture of the project

@@ -1,0 +1,1 @@
+# Dockerfile for containerizing the Whisper model with CUDA support

@@ -1,0 +1,1 @@
+# Wrapper class to handle loading and inference of the Whisper model
