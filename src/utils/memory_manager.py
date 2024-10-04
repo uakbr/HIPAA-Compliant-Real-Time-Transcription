@@ -8,10 +8,13 @@ class SecureAllocator:
         # Keep track of allocated buffers
         self.buffers = []
 
-    def allocate(self, size):
-        # Allocate a zero-initialized buffer
-        buffer = np.zeros(size, dtype=np.uint8)
+    def allocate_buffer(self, data):
+        # Allocate a buffer and copy data securely
+        size = data.nbytes
+        buffer = np.empty_like(data)
+        np.copyto(buffer, data)
         self.buffers.append(buffer)
+        self.zero_memory(data)
         return buffer
 
     def deallocate(self, buffer):

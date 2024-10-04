@@ -7,14 +7,20 @@ from utils.config import Config
 class PHIScrubber:
     def __init__(self):
         self.config = Config()
-        self.nlp = spacy.load('en_core_web_sm')
-        # Add custom NER model for medical entities if available
-        # self.nlp = spacy.load('en_core_med7_lg')
+        # Load custom NER model for medical entities if available
+        try:
+            self.nlp = spacy.load('en_core_sci_md')
+        except OSError:
+            self.nlp = spacy.load('en_core_web_sm')
+            print("Custom medical NER model not found. Using default model.")
 
         # Define regex patterns for rule-based PHI detection
         self.regex_patterns = [
-            (re.compile(r'\b\d{3}-\d{2}-\d{4}\b'), '[SSN]'),
-            (re.compile(r'\b\d{10}\b'), '[PHONE]'),
+            (re.compile(r'\b\d{3}-\d{2}-\d{4}\b'), '[SSN]'),        # Social Security Number
+            (re.compile(r'\b\d{10}\b'), '[PHONE]'),                 # Phone Number
+            (re.compile(r'\b\d{5}(-\d{4})?\b'), '[ZIP]'),           # ZIP Code
+            (re.compile(r'\b[A-Z]{2}\d{6}\b'), '[MRN]'),            # Medical Record Number
+            (re.compile(r'\b\d{4}-\d{2}-\d{2}\b'), '[DATE]'),       # Date of Birth
             # Add more patterns as needed
         ]
 

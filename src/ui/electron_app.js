@@ -1,3 +1,4 @@
+// src/ui/electron_app.js
 // Electron app initialization and rendering logic for the user interface
 
 const { app, BrowserWindow, ipcMain } = require('electron');
@@ -23,7 +24,7 @@ function createWindow() {
   mainWindow.webContents.on('did-finish-load', () => {
     authManager.authenticate().then((authenticated) => {
       if (authenticated) {
-        mainWindow.webContents.send('authenticated');
+        mainWindow.webContents.send('authenticated', authManager.getCurrentUserRole());
       } else {
         app.quit();
       }
