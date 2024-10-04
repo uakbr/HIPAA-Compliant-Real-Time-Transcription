@@ -1,1 +1,14 @@
 /* UI styling for Electron app */
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1E1E1E;
+  color: #FFFFFF;
+  font-family: Arial, sans-serif;
+}
+
+#transcription {
+  margin: 20px;
+  font-size: 18px;
+}

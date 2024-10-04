@@ -1,4 +1,4 @@
-# Whisper Model for Real-Time HIPAA-Compliant Transcription: A Deep Dive
+ # Whisper Model for Real-Time HIPAA-Compliant Transcription: A Deep Dive
 
 In today's healthcare environment, efficient and secure documentation is more crucial than ever. As a developer passionate about both technology and privacy, I embarked on an ambitious project to implement OpenAI's Whisper model for real-time transcription in a healthcare setting, fully adhering to HIPAA regulations. In this post, I'll share my journey in building a desktop application that captures and transcribes conversations in real time while ensuring patient data remains confidential and secure.
 
