@@ -2,6 +2,8 @@
 
 import threading
 import time
+import signal
+import sys
 from audio_capture import AudioCapture
 from whisper_model import WhisperModel
 from phi_scrubber import PHIScrubber
@@ -67,12 +69,34 @@ def main():
             allocator.deallocate(transcription)
             allocator.deallocate(sanitized_text)
 
+    # Function to handle secure shutdown
+    def secure_shutdown():
+        logger.info("Performing secure shutdown...")
+        # Stop audio capture
+        audio_capture.stop()
+        # Securely erase data
+        allocator.cleanup()
+        # Cleanup Whisper model
+        whisper_model.cleanup()
+        # Shutdown UI
+        ui_app.quit()
+        logger.info("Shutdown complete.")
+        sys.exit(0)
+
+    # Signal handlers for graceful shutdown
+    signal.signal(signal.SIGINT, lambda sig, frame: secure_shutdown())
+    signal.signal(signal.SIGTERM, lambda sig, frame: secure_shutdown())
+
     # Start audio processing thread
     processing_thread = threading.Thread(target=process_audio)
     processing_thread.start()
 
-    # Run the UI application
-    ui_app.run()
+    try:
+        # Run the UI application
+        ui_app.run()
+    except Exception as e:
+        logger.error(f"Unexpected error: {e}")
+        secure_shutdown()
 
     # On exit, perform cleanup
     audio_capture.stop()

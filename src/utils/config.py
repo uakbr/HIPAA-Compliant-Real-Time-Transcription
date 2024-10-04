@@ -17,4 +17,7 @@ class Config:
     # PHI detection settings
     PHI_ENTITY_LABELS = ['PERSON', 'DATE', 'ORG', 'GPE', 'LOC', 'ID']
 
+    # CPU optimization settings
+    CPU_NUM_THREADS = 4  # Adjust based on the number of CPU cores
+
     # Other configurations as needed

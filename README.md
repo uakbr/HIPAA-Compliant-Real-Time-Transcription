@@ -2,6 +2,8 @@
 
 In today's healthcare environment, efficient and secure documentation is more crucial than ever. As a developer passionate about both technology and privacy, I embarked on an ambitious project to implement OpenAI's Whisper model for real-time transcription in a healthcare setting, fully adhering to HIPAA regulations. In this post, I'll share my journey in building a desktop application that captures and transcribes conversations in real time while ensuring patient data remains confidential and secure.
 
+We go to great lengths, and extents, and even make some architectural choices at the cost of efficiency for the sake of ensuring HIPAA compliance and maintaining the utmost data privacy for our users, as will be detailed in this repository.
+
 ## Table of Contents
 
 1. Introduction
